@@ -1,6 +1,5 @@
 package com.lazday.crudkotlin
 
-import com.lazday.crudkotlin.retrofit.DeleteRequest
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -17,7 +16,7 @@ interface ApiEndpoint {
     fun delete( @Field("id") id: String ): Call<SubmitModel>
 
     @FormUrlEncoded
-    @PUT("update.php")
+    @POST("update.php")
     fun update(
             @Field("id") id: String,
             @Field("note") note: String

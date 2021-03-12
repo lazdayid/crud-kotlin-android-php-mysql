@@ -10,7 +10,7 @@ import com.google.android.material.card.MaterialCardView
 
 class NoteAdapter (
     var notes: ArrayList<NoteModel.Data>,
-    val listener: OnAdapterListener
+    private val listener: OnAdapterListener
 ) : RecyclerView.Adapter<NoteAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
@@ -26,12 +26,14 @@ class NoteAdapter (
         holder.imageDelete.setOnClickListener {
             listener.onDelete(note)
         }
+        holder.textNote.setOnClickListener {
+            listener.onUpdate(note)
+        }
     }
 
-    class ViewHolder(val view: View): RecyclerView.ViewHolder(view) {
+    class ViewHolder(view: View): RecyclerView.ViewHolder(view) {
         val textNote = view.findViewById<TextView>(R.id.text_note)
         val imageDelete = view.findViewById<ImageView>(R.id.image_delete)
-        val container = view.findViewById<MaterialCardView>(R.id.container)
     }
 
     fun setData(data: List<NoteModel.Data>) {
