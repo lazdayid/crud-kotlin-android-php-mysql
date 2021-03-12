@@ -13,13 +13,10 @@ class NoteAdapter (
     val listener: OnAdapterListener
 ) : RecyclerView.Adapter<NoteAdapter.ViewHolder>(){
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-        ViewHolder(
-            LayoutInflater.from(parent.context).inflate(
-                R.layout.adapter_note,
-                parent, false
-            )
-        )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
+            LayoutInflater.from(parent.context)
+                    .inflate(R.layout.adapter_note, parent, false )
+    )
 
     override fun getItemCount() = notes.size
 

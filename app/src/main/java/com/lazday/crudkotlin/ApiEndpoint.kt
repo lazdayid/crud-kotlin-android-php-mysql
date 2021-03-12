@@ -1,19 +1,25 @@
 package com.lazday.crudkotlin
 
+import com.lazday.crudkotlin.retrofit.DeleteRequest
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiEndpoint {
 
     @GET("data.php") fun notes(): Call<NoteModel>
 
-//    @FormUrlEncoded
-//    @POST("login/login")
-//    fun login(
-//            @Field("username") username: String,
-//            @Field("password") password: String
-//    ): Call<LoginResponse>
+    @FormUrlEncoded
+    @POST("create.php")
+    fun create( @Field("note") note: String ): Call<SubmitModel>
+
+    @FormUrlEncoded
+    @POST("delete.php")
+    fun delete( @Field("id") id: String ): Call<SubmitModel>
+
+    @FormUrlEncoded
+    @PUT("update.php")
+    fun update(
+            @Field("id") id: String,
+            @Field("note") note: String
+    ): Call<SubmitModel>
 }
